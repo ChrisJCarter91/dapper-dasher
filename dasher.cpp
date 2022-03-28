@@ -42,6 +42,8 @@ int main()
         0.0 // float runningTime
     };
 
+    AnimData nebulae[2]{ nebData, neb2Data };
+
     // Nebula X Velocity (pixels/second)
     int nebVel{-200};
 
@@ -96,10 +98,10 @@ int main()
         }
 
         //Update Nebula Position
-        nebData.pos.x += nebVel * dT;
+        nebulae[0].pos.x += nebVel * dT;
 
         // Update 2nd Nebula position
-        neb2Data.pos.x += nebVel * dT;
+        nebulae[1].pos.x += nebVel * dT;
 
         // Update Scarfy Position
         scarfyData.pos.y += velocity * dT;
@@ -123,28 +125,28 @@ int main()
         }
 
         // Update nebula animation frame
-        nebData.runningTime += dT;
-        if (nebData.runningTime >= nebData.updateTime)
+        nebulae[0].runningTime += dT;
+        if (nebulae[0].runningTime >= nebulae[0].updateTime)
         {
-            nebData.runningTime = 0.0;
-            nebData.rec.x = nebData.frame * nebData.rec.width;
-            nebData.frame++;
-            if (nebData.frame > 7)
+            nebulae[0].runningTime = 0.0;
+            nebulae[0].rec.x = nebulae[0].frame * nebulae[0].rec.width;
+            nebulae[0].frame++;
+            if (nebulae[0].frame > 7)
             {
-                nebData.frame = 0;
+                nebulae[0].frame = 0;
             }
         }
 
         // Update nebula 2 animation frame
-        neb2Data.runningTime += dT;
-        if (neb2Data.runningTime >= neb2Data.updateTime)
+        nebulae[2].runningTime += dT;
+        if (nebulae[2].runningTime >= nebulae[2].updateTime)
         {
-            neb2Data.runningTime = 0.0;
-            neb2Data.rec.x = neb2Data.frame * neb2Data.rec.width;
-            neb2Data.frame++;
-            if (neb2Data.frame > 7)
+            nebulae[2].runningTime = 0.0;
+            nebulae[2].rec.x = nebulae[2].frame * nebulae[2].rec.width;
+            nebulae[2].frame++;
+            if (nebulae[2].frame > 7)
             {
-                neb2Data.frame = 0;
+                nebulae[2].frame = 0;
             }
         }
 
