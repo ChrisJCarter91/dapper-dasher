@@ -29,21 +29,29 @@ int main()
         ClearBackground(WHITE);
 
         // Perform ground check
+
+        // is rectangle in the air?
+        bool isInAir {};
+        // jump velocity
+        const int jumpVel{-22};
+
         if (posY >= windowHeight - height)
         {
             // rectangle is on the ground
             velocity = 0;
+            isInAir = false;
         }
         else
         {
             // rectangle is in the air - Apply gravity
             velocity += gravity;
+            isInAir = true;
         }
 
-        // Jumping
-        if (IsKeyPressed(KEY_SPACE)) 
+        // Jump Check
+        if (IsKeyPressed(KEY_SPACE) && !isInAir) 
         {
-            velocity -= 10;
+            velocity += jumpVel;
         }
 
         // Update Position
