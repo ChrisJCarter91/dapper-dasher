@@ -3,18 +3,23 @@
 int main()
 {
     // Window Dimensions
-    int width{800};
-    int height {450};
-    InitWindow(width, height, "Dapper-Dasher");
+    const int windowWidth{800};
+    const int windowHeight {450};
+
+    // Initialize the window
+    InitWindow(windowWidth, windowHeight, "Dapper-Dasher!");
 
     SetTargetFPS(60);
 
-    while (WindowShouldClose() == false)
+    while (!WindowShouldClose())
     {
+        // Start Drawing
         BeginDrawing();
-        
+
         ClearBackground(WHITE);
 
+        // Stop Drawing
         EndDrawing();
     }
+    CloseWindow();
 }
