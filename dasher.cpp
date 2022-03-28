@@ -26,6 +26,12 @@ int main()
 
     int velocity{0};
 
+    // animation frame
+    int frame{};
+    // Amount of time before we update the animation frame
+    const float updateTime{1.0/12.0};
+    float runningTime{};
+
     SetTargetFPS(60);
 
     while (!WindowShouldClose())
@@ -65,6 +71,20 @@ int main()
 
         // Update Position
         scarfyPos.y += velocity * dT;
+
+        runningTime += dT;
+        // Update Running time
+        if (runningTime >= updateTime)
+        {
+            runningTime = 0.0;
+            // Update animation frame
+            scarfyRec.x = frame * scarfyRec.width;
+            frame++;
+            if (frame > 5)
+            {
+                frame = 0;
+            }
+        }
 
         DrawTextureRec(scarfy, scarfyRec, scarfyPos, WHITE);
 
